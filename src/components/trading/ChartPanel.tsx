@@ -1,5 +1,5 @@
 import { useEffect, useRef, useCallback, useState } from 'react';
-import { createChart, ColorType, CrosshairMode, CandlestickSeries, VolumeSeries, LineSeries } from 'lightweight-charts';
+import { createChart, ColorType, CrosshairMode, CandlestickSeries, HistogramSeries, LineSeries } from 'lightweight-charts';
 import { generateCandles, TIMEFRAMES } from '@/lib/mockData';
 import TimeframeSelector from './TimeframeSelector';
 
