@@ -140,4 +140,7 @@
   .scrollbar-thin::-webkit-scrollbar-thumb {
     @apply bg-muted-foreground/20 rounded-full;
   }
+  .order-input {
+    @apply w-full bg-accent rounded px-2 py-1.5 text-xs font-mono outline-none focus:ring-1 focus:ring-primary/50 placeholder:text-muted-foreground;
+  }
 }
