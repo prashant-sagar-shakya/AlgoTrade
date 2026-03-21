@@ -57,7 +57,7 @@ export default function ChartPanel({ symbol, isDark }: ChartPanelProps) {
     });
     candleSeries.setData(candles.map(c => ({ time: c.time as any, open: c.open, high: c.high, low: c.low, close: c.close })));
 
-    const volumeSeries = chart.addSeries(VolumeSeries, {
+    const volumeSeries = chart.addSeries(HistogramSeries, {
       priceFormat: { type: 'volume' },
       priceScaleId: '',
     });
