@@ -2,95 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --background: 220 14% 96%;
+    --foreground: 220 20% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 220 20% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
+    --popover-foreground: 220 20% 10%;
+    --primary: 220 70% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 90%;
+    --secondary-foreground: 220 20% 10%;
+    --muted: 220 14% 92%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 220 14% 90%;
+    --accent-foreground: 220 20% 10%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 220 70% 50%;
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Trading specific */
+    --chart-bg: 0 0% 100%;
+    --chart-grid: 220 13% 93%;
+    --bull: 145 63% 42%;
+    --bull-foreground: 0 0% 100%;
+    --bear: 0 72% 51%;
+    --bear-foreground: 0 0% 100%;
+    --signal-strong: 145 63% 42%;
+    --signal-moderate: 45 93% 47%;
+    --signal-weak: 0 72% 51%;
+    --panel-border: 220 13% 88%;
+    --surface-elevated: 0 0% 100%;
+    --ticker-positive: 145 63% 42%;
+    --ticker-negative: 0 72% 51%;
+    --ticker-neutral: 220 10% 46%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 225 20% 7%;
+    --foreground: 210 20% 92%;
+    --card: 225 18% 10%;
+    --card-foreground: 210 20% 92%;
+    --popover: 225 18% 10%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 225 15% 15%;
+    --secondary-foreground: 210 20% 92%;
+    --muted: 225 15% 15%;
+    --muted-foreground: 215 15% 55%;
+    --accent: 225 15% 15%;
+    --accent-foreground: 210 20% 92%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 225 15% 18%;
+    --input: 225 15% 18%;
+    --ring: 217 91% 60%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --chart-bg: 225 20% 7%;
+    --chart-grid: 225 15% 14%;
+    --bull: 145 72% 46%;
+    --bull-foreground: 0 0% 100%;
+    --bear: 0 84% 60%;
+    --bear-foreground: 0 0% 100%;
+    --signal-strong: 145 72% 46%;
+    --signal-moderate: 45 93% 47%;
+    --signal-weak: 0 84% 60%;
+    --panel-border: 225 15% 18%;
+    --surface-elevated: 225 18% 12%;
+    --ticker-positive: 145 72% 46%;
+    --ticker-negative: 0 84% 60%;
+    --ticker-neutral: 215 15% 55%;
   }
 }
 
@@ -98,8 +86,61 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .trading-panel {
+    @apply bg-card border border-panel rounded-lg overflow-hidden;
+  }
+  .trading-panel-header {
+    @apply px-3 py-2 border-b border-panel flex items-center justify-between text-xs font-medium text-muted-foreground uppercase tracking-wider;
+  }
+  .price-up {
+    @apply text-bull;
+  }
+  .price-down {
+    @apply text-bear;
+  }
+  .btn-buy {
+    @apply bg-bull text-bull-foreground hover:brightness-110 active:scale-[0.97] transition-all duration-150;
+  }
+  .btn-sell {
+    @apply bg-bear text-bear-foreground hover:brightness-110 active:scale-[0.97] transition-all duration-150;
+  }
+  .signal-badge-strong {
+    @apply bg-signal-strong/15 text-signal-strong border border-signal-strong/25;
+  }
+  .signal-badge-moderate {
+    @apply bg-signal-moderate/15 text-signal-moderate border border-signal-moderate/25;
+  }
+  .signal-badge-weak {
+    @apply bg-signal-weak/15 text-signal-weak border border-signal-weak/25;
+  }
+  .tf-btn {
+    @apply px-2 py-1 text-xs font-mono rounded transition-all duration-150 text-muted-foreground hover:text-foreground hover:bg-accent;
+  }
+  .tf-btn-active {
+    @apply bg-primary/15 text-primary font-semibold;
+  }
+
+  /* Scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+  .order-input {
+    @apply w-full bg-accent rounded px-2 py-1.5 text-xs font-mono outline-none focus:ring-1 focus:ring-primary/50 placeholder:text-muted-foreground;
   }
 }
