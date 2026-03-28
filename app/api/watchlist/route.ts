@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
 
     if (!symbol) return NextResponse.json({ error: 'Symbol required' }, { status: 400 });
 
-    const user = await User.findOneAndUpdate(
+    const user = await (User as any).findOneAndUpdate(
       { userId },
       { $addToSet: { watchlist: symbol } },
       { new: true, upsert: true }

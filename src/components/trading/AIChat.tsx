@@ -155,12 +155,12 @@ export default function AIChat({ symbol, price, indicators, userId }: AIChatProp
               <div className={`w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 border ${msg.role === 'assistant' ? 'bg-primary/10 border-primary/20 text-primary' : 'bg-accent/40 border-panel/50'}`}>
                 {msg.role === 'assistant' ? <Bot size={12} /> : <User size={12} />}
               </div>
-              <div className={`max-w-[90%] rounded-xl px-3 py-2 text-[10.5px] leading-relaxed shadow-sm ${msg.role === 'user' ? 'bg-primary text-primary-foreground font-semibold' : 'bg-accent/30 border border-panel/10'}`}>
-                <div className="prose prose-invert prose-xs max-w-none" dangerouslySetInnerHTML={{
+              <div className={`max-w-[90%] rounded-xl px-3 py-2 text-[10.5px] leading-relaxed shadow-sm ${msg.role === 'user' ? 'bg-primary text-primary-foreground font-semibold' : 'bg-accent/30 border border-panel/10 text-foreground'}`}>
+                <div className="prose dark:prose-invert prose-xs max-w-none prose-p:text-foreground prose-strong:text-foreground prose-em:text-foreground" dangerouslySetInnerHTML={{
                    __html: (msg.content || '')
                      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                     .replace(/`(.*?)`/g, '<code class="bg-background/50 px-1 rounded text-[9px] font-mono">$1</code>')
+                     .replace(/`(.*?)`/g, '<code class="bg-background/50 text-foreground px-1 rounded text-[9px] font-mono">$1</code>')
                      .replace(/\n\n/g, '<br/><br/>')
                      .replace(/\n/g, '<br/>')
                  }} />
@@ -188,7 +188,7 @@ export default function AIChat({ symbol, price, indicators, userId }: AIChatProp
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleSend()}
             placeholder={`Analyze ${symbol} trend...`}
-            className="flex-1 bg-transparent px-3 py-1.5 text-[10.5px] outline-none placeholder:text-muted-foreground/50 font-medium"
+            className="flex-1 bg-transparent px-3 py-1.5 text-[10.5px] outline-none placeholder:text-muted-foreground/50 font-medium text-foreground"
           />
           <motion.button whileTap={{ scale: 0.9 }} onClick={handleSend} disabled={!input.trim()}
             className="w-8 h-8 rounded-md bg-primary text-primary-foreground disabled:opacity-40 transition-opacity flex items-center justify-center shadow-md">
