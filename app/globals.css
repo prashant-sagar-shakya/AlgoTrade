@@ -28,20 +28,9 @@
     --radius: 0.5rem;
 
     /* Trading specific */
-    --chart-bg: 0 0% 100%;
-    --chart-grid: 220 13% 93%;
     --bull: 145 63% 42%;
-    --bull-foreground: 0 0% 100%;
     --bear: 0 72% 51%;
-    --bear-foreground: 0 0% 100%;
-    --signal-strong: 145 63% 42%;
-    --signal-moderate: 45 93% 47%;
-    --signal-weak: 0 72% 51%;
     --panel-border: 220 13% 88%;
-    --surface-elevated: 0 0% 100%;
-    --ticker-positive: 145 63% 42%;
-    --ticker-negative: 0 72% 51%;
-    --ticker-neutral: 220 10% 46%;
   }
 
   .dark {
@@ -65,20 +54,9 @@
     --input: 225 15% 18%;
     --ring: 217 91% 60%;
 
-    --chart-bg: 225 20% 7%;
-    --chart-grid: 225 15% 14%;
     --bull: 145 72% 46%;
-    --bull-foreground: 0 0% 100%;
     --bear: 0 84% 60%;
-    --bear-foreground: 0 0% 100%;
-    --signal-strong: 145 72% 46%;
-    --signal-moderate: 45 93% 47%;
-    --signal-weak: 0 84% 60%;
     --panel-border: 225 15% 18%;
-    --surface-elevated: 225 18% 12%;
-    --ticker-positive: 145 72% 46%;
-    --ticker-negative: 0 84% 60%;
-    --ticker-neutral: 215 15% 55%;
   }
 }
 
@@ -97,10 +75,10 @@
     font-family: 'JetBrains Mono', monospace;
   }
   .trading-panel {
-    @apply bg-card border border-panel rounded-lg overflow-hidden;
+    @apply bg-card border border-panel rounded-lg overflow-hidden flex flex-col;
   }
   .trading-panel-header {
-    @apply px-3 py-2 border-b border-panel flex items-center justify-between text-xs font-medium text-muted-foreground uppercase tracking-wider;
+    @apply px-3 py-2 border-b border-panel flex items-center justify-between text-xs font-medium text-muted-foreground uppercase tracking-wider bg-background/50;
   }
   .price-up {
     @apply text-bull;
@@ -114,25 +92,11 @@
   .btn-sell {
     @apply bg-bear text-bear-foreground hover:brightness-110 active:scale-[0.97] transition-all duration-150;
   }
-  .signal-badge-strong {
-    @apply bg-signal-strong/15 text-signal-strong border border-signal-strong/25;
-  }
-  .signal-badge-moderate {
-    @apply bg-signal-moderate/15 text-signal-moderate border border-signal-moderate/25;
-  }
-  .signal-badge-weak {
-    @apply bg-signal-weak/15 text-signal-weak border border-signal-weak/25;
-  }
-  .tf-btn {
-    @apply px-2 py-1 text-xs font-mono rounded transition-all duration-150 text-muted-foreground hover:text-foreground hover:bg-accent;
-  }
-  .tf-btn-active {
-    @apply bg-primary/15 text-primary font-semibold;
-  }
 
   /* Scrollbar */
   .scrollbar-thin::-webkit-scrollbar {
     width: 4px;
+    height: 4px;
   }
   .scrollbar-thin::-webkit-scrollbar-track {
     background: transparent;
@@ -140,7 +104,15 @@
   .scrollbar-thin::-webkit-scrollbar-thumb {
     @apply bg-muted-foreground/20 rounded-full;
   }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+
   .order-input {
-    @apply w-full bg-accent rounded px-2 py-1.5 text-xs font-mono outline-none focus:ring-1 focus:ring-primary/50 placeholder:text-muted-foreground;
+    @apply w-full bg-background border border-panel px-3 py-2 rounded text-xs font-mono outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/50 text-foreground;
+  }
+
+  .border-panel {
+    @apply border-border/40;
   }
 }

@@ -113,9 +113,9 @@ export const mockSignals: Signal[] = [
 export interface IndicatorData {
   rsi: number;
   macd: { value: number; signal: number; histogram: number };
-  ema20: number;
+  ema9: number;
+  ema21: number;
   ema50: number;
-  ema200: number;
   vwap: number;
   supertrend: { value: number; direction: 'up' | 'down' };
   atr: number;
@@ -126,9 +126,9 @@ export function getMockIndicators(price: number): IndicatorData {
   return {
     rsi: 45 + Math.random() * 30,
     macd: { value: (Math.random() - 0.5) * 100, signal: (Math.random() - 0.5) * 80, histogram: (Math.random() - 0.5) * 40 },
-    ema20: price * (1 + (Math.random() - 0.5) * 0.01),
+    ema9: price * (1 + (Math.random() - 0.5) * 0.005),
+    ema21: price * (1 + (Math.random() - 0.5) * 0.012),
     ema50: price * (1 + (Math.random() - 0.5) * 0.02),
-    ema200: price * (1 + (Math.random() - 0.5) * 0.04),
     vwap: price * (1 + (Math.random() - 0.5) * 0.005),
     supertrend: { value: price * (1 + (Math.random() - 0.5) * 0.015), direction: Math.random() > 0.5 ? 'up' : 'down' },
     atr: price * 0.015 * (0.5 + Math.random()),
@@ -138,4 +138,17 @@ export function getMockIndicators(price: number): IndicatorData {
       lower: price * 0.98,
     },
   };
+}
+export function getCurrencySymbol(symbol: string): string {
+  if (!symbol) return '$';
+  const upperSymbol = symbol.toUpperCase();
+  const isIndian = upperSymbol.endsWith('.NS') || 
+                   upperSymbol.endsWith('.BO') || 
+                   upperSymbol.includes('NSEI') ||
+                   upperSymbol.includes('BSESN') ||
+                   upperSymbol.includes('NIFTY') ||
+                   upperSymbol.includes('SENSEX') ||
+                   upperSymbol.includes('NSEBANK') ||
+                   upperSymbol.includes('BANKNIFTY');
+  return isIndian ? '₹' : '$';
 }
