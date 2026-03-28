@@ -8,13 +8,13 @@ export interface RealChartData {
   volume: number;
 }
 
-const PROXY_URL = 'https://corsproxy.io/?'; 
+const PROXY_URL = '/api/yahoo?url='; 
 
 export async function fetchStockData(symbol: string, interval: string = '1d', range: string = '1y'): Promise<RealChartData[]> {
   try {
-    const targetUrl = encodeURIComponent(`https://query2.finance.yahoo.com/v8/finance/chart/${symbol}?interval=${interval}&range=${range}`);
-    const response = await fetch(`${PROXY_URL}${targetUrl}`);
-    const data = await response.json();
+     const targetUrl = encodeURIComponent(`https://query2.finance.yahoo.com/v8/finance/chart/${symbol}?interval=${interval}&range=${range}`);
+     const response = await fetch(`${PROXY_URL}${targetUrl}`, { cache: 'no-store' });
+     const data = await response.json();
     
     if (!data.chart.result) return [];
     
@@ -38,9 +38,9 @@ export async function fetchStockData(symbol: string, interval: string = '1d', ra
 export async function fetchQuote(symbol: string) {
   try {
     const targetUrl = encodeURIComponent(`https://query2.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1m&range=1d`);
-    const response = await fetch(`${PROXY_URL}${targetUrl}`, { cache: 'no-cache' });
+    const response = await fetch(`${PROXY_URL}${targetUrl}`, { cache: 'no-store' });
     const data = await response.json();
-    if (!data.chart.result) return null;
+    if (!data.chart || !data.chart.result) return null;
     const res = data.chart.result[0];
     const meta = res.meta;
     
@@ -69,7 +69,7 @@ export async function fetchQuote(symbol: string) {
 export async function searchSymbols(query: string) {
   try {
     const targetUrl = encodeURIComponent(`https://query2.finance.yahoo.com/v1/finance/search?q=${query}&quotesCount=5`);
-    const response = await fetch(`${PROXY_URL}${targetUrl}`);
+    const response = await fetch(`${PROXY_URL}${targetUrl}`, { cache: 'no-store' });
     const data = await response.json();
     return data.quotes || [];
   } catch {
@@ -80,7 +80,7 @@ export async function searchSymbols(query: string) {
 export async function fetchNews(symbol: string = 'AAPL') {
   try {
     const targetUrl = encodeURIComponent(`https://query2.finance.yahoo.com/v1/finance/search?q=${symbol}&newsCount=10`);
-    const response = await fetch(`${PROXY_URL}${targetUrl}`);
+    const response = await fetch(`${PROXY_URL}${targetUrl}`, { cache: 'no-store' });
     const data = await response.json();
     return data.news || [];
   } catch {
